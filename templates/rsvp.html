@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}RSVP{% endblock %}
+{% block content %}
+<h1>RSVP</h1>
+<form method="post" action="{{ url_for('rsvp', event_id=event.id) }}">
+    {{ form.hidden_tag() }}
+    <p>{{ form.status.label }} {{ form.status() }}</p>
+    <p><input type="submit" value="RSVP"></p>
+</form>
+{% endblock %}
+

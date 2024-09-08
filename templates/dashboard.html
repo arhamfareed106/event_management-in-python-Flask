@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+{% if current_user.role == 'admin' or current_user.role == 'event_manager' %}
+    <p><a href="{{ url_for('create_event') }}">Create Event</a></p>
+{% endif %}
+<h2>Events</h2>
+<ul>
+    {% for event in events %}
+        <li>{{ event.title }} - <a href="{{ url_for('rsvp', event_id=event.id) }}">RSVP</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
